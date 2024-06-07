@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">Books List</h2>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">ISBN</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of Books; let i = index">
+          <th scope="row">{{book._id}}</th>
+          <td>{{book.isbn}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.description}}</td>
+
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary" (click)="onUpdateBook(book)">Update</button>
+            <button class="btn btn-sm btn-primary" (click)="onDelete(book._id)">Delete</button>
+       
+          </td>
+        </tr>
+        <tr *ngIf="EditForm">
+          <td colspan="6">
+            <div class="edit-form">
+              <h2>Book Update</h2>
+              <form (ngSubmit)="onUpdate()">
+                <div class="form-group">
+                  <label for="isbn">ISBN</label>
+                  <input type="text" id="isbn" [(ngModel)]="bookchanges.isbn" name="isbn" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" id="title" [(ngModel)]="bookchanges.title" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="author">Author</label>
+                  <input type="text" id="author" [(ngModel)]="bookchanges.author" name="author" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" id="description" [(ngModel)]="bookchanges.description" name="description" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="published_year">Published Year</label>
+                  <input type="text" id="published_year" [(ngModel)]="bookchanges.published_year" name="published_year" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="publisher">Publisher</label>
+                  <input type="text" id="publisher" [(ngModel)]="bookchanges.publisher" name="publisher" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Apply Changes</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

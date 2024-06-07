@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CrudService } from './service/crud.service'
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BooksListComponent } from './components/books-list/books-list.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AddBookComponent } from './components/add-book/add-book.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    BooksListComponent,
+    AddBookComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  providers: [CrudService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
